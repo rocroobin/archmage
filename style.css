@@ -1,0 +1,73 @@
+body {
+    background-image: url(images/background-image.jpg);
+    overflow: hidden;
+}
+
+.redCard {
+    width: 120px;
+    height: 220px;
+    background: red;
+    padding: 5px;
+    padding-right: 20px; 
+    border: solid 1px black; 
+    text-align: center;
+}
+
+.greenCard {
+    width: 120px;
+    height: 220px;
+    background: green;
+    padding: 5px;
+    padding-right: 20px; 
+    border: solid 1px black; 
+    text-align: center;
+}
+
+.blueCard {
+    width: 120px;
+    height: 220px;
+    background: blue;
+    padding: 5px;
+    padding-right: 20px; 
+    border: solid 1px black; 
+    text-align: center;
+}
+
+.tower {
+    width: 70px;
+    background: brown; 
+    border: solid 1px black;
+}
+
+.wall {
+    width: 60px;
+    background: gray; 
+    border: solid 1px black;
+}
+
+.redresource {
+    width: 120px;
+    height: 120px;
+    background: red;
+    padding: 5px;
+    padding-right: 20px; 
+    border: solid 1px black; 
+}
+
+.greenresource {
+    width: 120px;
+    height: 120px;
+    background: green;
+    padding: 5px;
+    padding-right: 20px; 
+    border: solid 1px black; 
+}
+
+.blueresource {
+    width: 120px;
+    height: 120px;
+    background: blue;
+    padding: 5px;
+    padding-right: 20px; 
+    border: solid 1px black; 
+}
