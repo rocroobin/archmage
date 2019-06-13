@@ -3,7 +3,7 @@ body {
     overflow: hidden;
 }
 
-#card {
+.card {
     width: 120px;
     height: 220px;
     background: red;
