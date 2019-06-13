@@ -73,6 +73,27 @@ function update() {
     divEnemyMonastery.innerHTML = enemy.monastery;
 }
 
+function getNewCard(id) {
+    // ищу данные карточки
+    const cardData = cardsRed.find((element) => {
+        console.log("ищу:", id, "проверяю:", element.id); 
+        if (element.id === id) {
+            console.log("нашел", element.id, element.name);
+            return true;
+        }
+    });
+    console.log("данные карточки", cardData);
+    // создаю div для карточки и заполняю его
+    const newCard = document.createElement('div');
+    newCard.className = "card";
+    const image = document.createElement("img");
+    image.src = cardData.image;
+    newCard.appendChild(image);
+    // добавляю карточку в контейнер
+    const container = document.querySelector(".container");
+    container.appendChild(newCard);
+}
+
 function toggle() {
     const state=document.querySelector(".state");
     if (turn === "my") {
@@ -89,3 +110,9 @@ state.addEventListener("click", toggle);
 
 toggle();
 update();
+setTimeout(() => getNewCard(69), 200);
+setTimeout(() => getNewCard(83), 400);
+setTimeout(() => getNewCard(87), 600);
+setTimeout(() => getNewCard(70), 800);
+setTimeout(() => getNewCard(71), 1000);
+setTimeout(() => getNewCard(98), 1200);
