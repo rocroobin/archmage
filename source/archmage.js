@@ -86,9 +86,27 @@ function getNewCard(id) {
     // создаю div для карточки и заполняю его
     const newCard = document.createElement('div');
     newCard.className = "card";
+
+    //добавляю название карточки
+    const nameCard = document.createElement("string");
+    nameCard.innerHTML = cardData.name;
+    newCard.appendChild(nameCard);
+
+    //добавляю картинку карточки
     const image = document.createElement("img");
     image.src = cardData.image;
     newCard.appendChild(image);
+
+    //добавляю стоимость карточки
+    const costCard = document.createElement("string");
+    costCard.innerHTML = "<p>" + cardData.cost + "</p>";
+    newCard.appendChild(costCard);
+
+    //добавляю описание карточки
+    const descriptionCard = document.createElement("string");
+    descriptionCard.innerHTML = "<p>" + cardData.description + "</p>";
+    newCard.appendChild(descriptionCard);
+
     // добавляю карточку в контейнер
     const container = document.querySelector(".container");
     container.appendChild(newCard);
