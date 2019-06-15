@@ -18,7 +18,13 @@ var cardsRed = [
         "id": 87,
         "cost":"0",
         "description":"<font class=\"blue\">-1</font> шахта, +10 к стене, вы получаете 5 маны  ",
-        "image":"http://www.witchhammer.ru/images/arcomage_new/image87.jpg"
+        "image":"http://www.witchhammer.ru/images/arcomage_new/image87.jpg",
+        effect(summoner, opponent) {
+            summoner.mine -= 1;
+            summoner.wall += 10;
+            summoner.mana += 5;
+            update();
+        },
     },
     {
         "name":"Счастливая монетка",
@@ -39,7 +45,13 @@ var cardsRed = [
         "id": 98,
         "cost":"1",
         "description":"+1 к стене, +1 к башне, +2 отряда  ",
-        "image":"http://www.witchhammer.ru/images/arcomage_new/image98.jpg"
+        "image":"http://www.witchhammer.ru/images/arcomage_new/image98.jpg",
+        effect(summoner, opponent) {
+            summoner.wall += 1;
+            summoner.tower += 1;
+            summoner.army += 2;
+            update();
+        },
     },
     {
         "name":"Новшества",

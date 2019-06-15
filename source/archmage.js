@@ -1,26 +1,92 @@
 var turn=null; //my and enemy
-
+/*
 var my = {
-    wall: 30, // здоровье стена
-    tower: 30, // здоровье башнибашни
-    mana: 5, // значение маны
-    monastery: 2, // монастырь, прирост маны каждый ход
-    stone: 5, // начальное значение камня
-    mine: 2, // шахта, прирост камня каждый ход
-    army: 5, // начальное значение отрядов
-    barrack: 2, // казарма, прирост отрядов каждый ход
+    _mana: 5,
+    get mana() { return this._mana; },
+    set mana(value) { 
+      let newValue = value;
+      if (newValue < 0 ) {
+        newValue = 0;
+      }
+      this._mana = newValue;
+      update();
+    }
+  } */
+
+/**
+ * функция проверяет чтобы значение value было не меньше 0
+ */
+function guard(value) {
+    let newValue = value;
+    if (newValue < 0 ) {
+        newValue = 0;
+    }
+    return newValue;
 };
 
-var enemy = {
-    wall: 30, // здоровье стена
-    tower: 30, // здоровье башнибашни
-    mana: 5, // значение маны
-    monastery: 2, // прирост маны каждый ход
-    stone: 5, // начальное значение камня
-    mine: 2, // прирост камня каждый ход
-    army: 5, // начальное значение отрядов
-    barrack: 2, // прирост отрядов каждый ход
-};
+class Player {
+    // здоровье стена
+    _wall = 30;
+    get wall() { return this._wall; }
+    set wall(value) { 
+        this._wall = guard(value);
+        update();
+    }
+
+    // здоровье башнибашни
+    _tower = 30;
+    get tower() { return this._tower; }
+    set tower(value) { 
+        this._tower = guard(value);
+        update();
+    }
+
+    _mana = 5; // значение маны
+    get mana() { return this._mana; }
+    set mana(value) { 
+        this._mana = guard(value);
+        update();
+    }
+
+    _monastery = 2; // монастырь, прирост маны каждый ход
+    get monastery() { return this._monastery; }
+    set monastery(value) { 
+        this._monastery = guard(value);
+        update();
+    }
+
+    _stone = 5; // начальное значение камня
+    get stone() { return this._stone; }
+    set stone(value) { 
+        this._stone = guard(value);
+        update();
+    }
+
+    _mine = 2; // шахта, прирост камня каждый ход
+    get mine() { return this._mine; }
+    set mine(value) { 
+        this._mine = guard(value);
+        update();
+    }
+
+    _army = 5; // начальное значение отрядов
+    get army() { return this._army; }
+    set army(value) { 
+        this._army = guard(value);
+        update();
+    }
+
+    _barrack = 2; // казарма, прирост отрядов каждый ход
+    get barrack() { return this._barrack; }
+    set barrack(value) { 
+        this._barrack = guard(value);
+        update();
+    }
+}
+
+var my = new Player();
+
+var enemy = new Player();
 
 function update() {
     // Моя стена
@@ -110,8 +176,27 @@ function getNewCard(id) {
     // добавляю карточку в контейнер
     const container = document.querySelector(".container");
     container.appendChild(newCard);
+
+    // функция применения эффекта к игроку/врагу
+    /*function currentEffect() {
+        cardData.effect(my, enemy);
+    } */
+    // стрелочная функция в альтелнативу выше закомментированной
+    const currentEffect = () => {
+        //debugger;
+        if (cardData.effect) {
+            cardData.effect(my, enemy);
+        } else {
+            alert("не найдено");
+        }
+    };
+    // пытаюсь заставить карточку работать по своему сценарию
+    newCard.addEventListener("click", currentEffect);
 }
 
+/**
+ * функция смены названия хода
+ */
 function toggle() {
     const state=document.querySelector(".state");
     if (turn === "my") {
@@ -123,7 +208,7 @@ function toggle() {
     }
 }
 
-const state=document.querySelector(".state");
+const state = document.querySelector(".state");
 state.addEventListener("click", toggle);
 
 toggle();
