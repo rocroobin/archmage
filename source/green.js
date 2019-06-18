@@ -4,21 +4,41 @@ var cardsGreen = [
         "id": 1,
         "cost":"0",
         "description":"Все игроки теряют по 6 отрядов",
-        "image":"http://www.witchhammer.ru/images/arcomage_new/image1.jpg"
+        "image":"http://www.witchhammer.ru/images/arcomage_new/image1.jpg",
+        effect(summoner, opponent) {
+            summoner.army -= 6;
+            opponent.army -= 6;
+            update();
+        },
     },
     {
         "name":"Полнолуние",
         "id": 14,
         "cost":"0",
         "description":"<font class=\"red\">+1</font> казарма всем игрокам, вы получаете 3 отряда",
-        "image":"http://www.witchhammer.ru/images/arcomage_new/image14.jpg"
+        "image":"http://www.witchhammer.ru/images/arcomage_new/image14.jpg",
+        effect(summoner, opponent) {
+            summoner.barrack += 1;
+            opponent.barrack += 1;
+            summoner.army += 3;
+            update();
+        },
     },
     {
         "name":"Гоблины",
         "id": 3,
         "cost":"1",
         "description":"4 единицы урона. Вы теряете 3 маны",
-        "image":"http://www.witchhammer.ru/images/arcomage_new/image3.jpg"
+        "image":"http://www.witchhammer.ru/images/arcomage_new/image3.jpg",
+        effect(summoner, opponent) {
+            summoner.mana -= 3;
+            if (opponent.wall < 4) {
+                opponent.tower += (opponent.wall - 4);
+            } else {
+                opponent.wall -= 4;
+            }
+            update();
+        },
     },
     {
         "name":"Фея",
@@ -39,7 +59,16 @@ var cardsGreen = [
         "id": 31,
         "cost":"2",
         "description":"3 урона, +1 мана",
-        "image":"http://www.witchhammer.ru/images/arcomage_new/image31.jpg"
+        "image":"http://www.witchhammer.ru/images/arcomage_new/image31.jpg",
+        effect(summoner, opponent) {
+            summoner.mana += 1;
+            if (opponent.wall < 3) {
+                opponent.tower += (opponent.wall - 3);
+            } else {
+                opponent.wall -= 3;
+            }
+            update();
+        },
     },
     {
         "name":"Копьеносец",

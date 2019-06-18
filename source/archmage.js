@@ -213,8 +213,8 @@ state.addEventListener("click", toggle);
 
 toggle();
 update();
-setTimeout(() => getNewCard(69), 200);
-setTimeout(() => getNewCard(83), 400);
+setTimeout(() => getNewCard(102), 200);
+setTimeout(() => getNewCard(95), 400);
 setTimeout(() => getNewCard(87), 600);
 setTimeout(() => getNewCard(70), 800);
 setTimeout(() => getNewCard(71), 1000);
