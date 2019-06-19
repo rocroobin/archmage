@@ -372,11 +372,7 @@ var cardsBlue = [
         "image":"http://www.witchhammer.ru/images/arcomage_new/image61.jpg",
         effect(summoner, opponent) {
             summoner.tower += 12;
-            if (opponent.wall < 6) {
-                opponent.tower += (opponent.wall - 6);
-            } else {
-                opponent.wall -= 6;
-            }
+            damage(opponent, 6);
             update();
         },
     },

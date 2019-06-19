@@ -244,11 +244,7 @@ var cardsRed = [
         "cost":"7",
         "description":"Все стены получают по 5 повреждений, играем снова\n  ",
         "image":"http://www.witchhammer.ru/images/arcomage_new/image81.jpg",
-        effect(summoner, opponent) {
-            summoner.wall -= 5;
-            opponent.wall -= 5;
-            update();
-        },
+        
     },
     {
         "name":"Великая стена",
@@ -338,11 +334,7 @@ var cardsRed = [
         "image":"http://www.witchhammer.ru/images/arcomage_new/image101.jpg",
         effect(summoner, opponent) {
             summoner.wall += 7;
-            if (opponent.wall < 6) {
-                opponent.tower += (opponent.wall - 6);
-            } else {
-                opponent.wall -= 6;
-            }
+            damage(opponent, 6);
             update();
         },
     },
@@ -390,11 +382,7 @@ var cardsRed = [
         "image":"http://www.witchhammer.ru/images/arcomage_new/image95.jpg",
         effect(summoner, opponent) {
             summoner.wall += 6;
-            if (opponent.wall < 10) {
-                opponent.tower += (opponent.wall - 10);
-            } else {
-                opponent.wall -= 10;
-            }
+            damage(opponent, 10);
             update();
         },
     },

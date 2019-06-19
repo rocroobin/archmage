@@ -13,9 +13,23 @@ var my = {
     }
   } */
 
+  /**
+   * 
+   функция урона
+   */
+function damage(player, valuedamage) {
+    if (player.wall < valuedamage) {
+        player.tower += (player.wall - valuedamage);
+        player.wall = 0;
+    } else {
+        player.wall -= valuedamage;
+    }
+}
+
 /**
  * функция проверяет чтобы значение value было не меньше 0
  */
+
 function guard(value) {
     let newValue = value;
     if (newValue < 0 ) {
