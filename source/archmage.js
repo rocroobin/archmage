@@ -15,14 +15,16 @@ var my = {
 
   /**
    * 
-   функция урона
+   * @param {Player} player 
+   * @param {number} valueDamage 
+   * функция урона
    */
-function damage(player, valuedamage) {
-    if (player.wall < valuedamage) {
-        player.tower += (player.wall - valuedamage);
+function damage(player, valueDamage) {
+    if (player.wall < valueDamage) {
+        player.tower += (player.wall - valueDamage);
         player.wall = 0;
     } else {
-        player.wall -= valuedamage;
+        player.wall -= valueDamage;
     }
 }
 
