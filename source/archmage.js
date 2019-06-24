@@ -1,4 +1,6 @@
 var turn=null; //my and enemy
+
+const cards = cardsRed.concat(cardsBlue, cardsGreen);
 /*
 var my = {
     _mana: 5,
@@ -28,7 +30,7 @@ function damage(player, valueDamage) {
     }
 }
 
-/**
+ /**
  * функция проверяет чтобы значение value было не меньше 0
  */
 
@@ -155,15 +157,13 @@ function update() {
     divEnemyMonastery.innerHTML = enemy.monastery;
 }
 
-function getNewCard(id) {
-    // ищу данные карточки
-    const cardData = cardsRed.find((element) => {
-        console.log("ищу:", id, "проверяю:", element.id); 
-        if (element.id === id) {
-            console.log("нашел", element.id, element.name);
-            return true;
-        }
-    });
+function getRandomCard() {
+    const index = Math.floor(Math.random() * cards.length);
+    return cards[index];
+}
+
+function renderNewCard(cardData) {
+    
     console.log("данные карточки", cardData);
     // создаю div для карточки и заполняю его
     const newCard = document.createElement('div');
@@ -211,13 +211,29 @@ function getNewCard(id) {
 }
 
 /**
+ * задаю функцию хода врага (компьютера)
+ */
+function turnEnemy() {
+    while(turn === "enemy") {
+        const nextCard = getRandomCard();
+        if (nextCard.effect) {
+            nextCard.effect(enemy, my);
+        } else {
+            alert("карта не найдена во время хода врага");
+        }
+    }
+} 
+
+ /**
  * функция смены названия хода
  */
+
 function toggle() {
     const state=document.querySelector(".state");
     if (turn === "my") {
         turn = "enemy";
         state.innerHTML = "Ход Врага";
+        turnEnemy();
     } else {
         turn ="my";
         state.innerHTML = "Мой Ход";
@@ -229,9 +245,9 @@ state.addEventListener("click", toggle);
 
 toggle();
 update();
-setTimeout(() => getNewCard(102), 200);
-setTimeout(() => getNewCard(95), 400);
-setTimeout(() => getNewCard(87), 600);
-setTimeout(() => getNewCard(70), 800);
-setTimeout(() => getNewCard(71), 1000);
-setTimeout(() => getNewCard(98), 1200);
+setTimeout(() => renderNewCard(getRandomCard()), 200);
+setTimeout(() => renderNewCard(getRandomCard()), 400);
+setTimeout(() => renderNewCard(getRandomCard()), 600);
+setTimeout(() => renderNewCard(getRandomCard()), 800);
+setTimeout(() => renderNewCard(getRandomCard()), 1000);
+setTimeout(() => renderNewCard(getRandomCard()), 1200);

@@ -9,6 +9,7 @@ var cardsRed = [
             summoner.stone -= 8;
             opponent.stone -= 8;
             update();
+            toggle();
         },
     },
     {
@@ -21,6 +22,7 @@ var cardsRed = [
             summoner.mine -= 1;
             opponent.mine -= 1;
             update();
+            toggle();
         },
     },
     {
@@ -34,6 +36,7 @@ var cardsRed = [
             summoner.wall += 10;
             summoner.mana += 5;
             update();
+            toggle();
         },
     },
     {
@@ -61,6 +64,7 @@ var cardsRed = [
             summoner.tower += 1;
             summoner.army += 2;
             update();
+            toggle();
         },
     },
     {
@@ -74,6 +78,7 @@ var cardsRed = [
             opponent.mine += 1;
             summoner.mana += 4;
             update();
+            toggle();
         },
     },
     {
